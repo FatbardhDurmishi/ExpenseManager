@@ -15,7 +15,15 @@ import androidx.room.Room
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-
+//RecyclerView is used to load views to the activity when you don’t know how many views we need,
+// or have a large number of individual item views to display in one activity.
+// It saves memory by reusing views when you scroll in an activity
+// instead of creating them all at the beginning when the activity first loads.
+//RecyclerView has three main parts:
+//the layout, The layout is the view that will be created for each item to be loaded into the RecyclerView.
+// (ne detyren tone eshte transaction_layout),dmth e perdor qet layout si shabllon per mi kriju views per transactions
+//ViewHolder,A ViewHolder is used to cache the view objects in order to save memory.
+//and adapter.The adapter creates new items in the form of ViewHolders, populates the ViewHolders with data, and returns information about the data.
 class TransactionAdapter( var transactions: List<Transaction>) :
     RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
     private lateinit var db: AppDatabase
@@ -78,12 +86,17 @@ class TransactionAdapter( var transactions: List<Transaction>) :
             notifyItemChanged(position)
 
         }
+
+        //button to delete a transaction
         holder.btnDelete.setOnClickListener {
             GlobalScope.launch {
+                //we access the delete method in the interface through the db variable and we give the transaction as a parameter
                 db.transactionDao().delete(transaction)
                 //val intent= Intent(holder.item.context,HomeActivity::class.java)
                 //context.startActivity(intent)
                 //HomeActivity.transactions.drop(position)
+                //this is a way to call a method from an activity class,we need to call this method after we delete a transaction
+                //to update the dashboard
                 (context as HomeActivity).fetchData()
             }
             //to notify when we change an element or smth
