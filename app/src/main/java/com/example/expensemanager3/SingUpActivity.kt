@@ -42,6 +42,7 @@ class SingUpActivity : AppCompatActivity() {
                                     if (it.isSuccessful) {
                                         val intent = Intent(this, MainActivity::class.java)
                                         startActivity(intent)
+                                        Toast.makeText(this,"Account created successfully",Toast.LENGTH_SHORT).show()
                                     } else {
                                         Toast.makeText(
                                             this,
