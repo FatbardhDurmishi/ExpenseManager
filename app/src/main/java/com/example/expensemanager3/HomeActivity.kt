@@ -19,6 +19,9 @@ class HomeActivity : AppCompatActivity() {
     // idea about data binding is to create an object that connects/maps/binds
     // two pieces of distant information together at compile time,
     // so that you don't have to look for it at runtime.
+    //in our case it binds the activity_home_layout to the HomeActivity
+    //this way we dont have to search for buttons or textviews with findViewById
+    //with databinding its faster
     private lateinit var binding: ActivityHomeBinding
     private lateinit var transactionAdapter: TransactionAdapter
     private lateinit var db: AppDatabase
@@ -37,6 +40,9 @@ class HomeActivity : AppCompatActivity() {
 
         // initialize transactionAdapter, it takes a parameter of transactions as a List
         transactionAdapter = TransactionAdapter(transactions)
+        //layout manager positions item views inside a RecyclerView and determines
+        // when to reuse item views that are no longer visible to the user.
+        //LinearLayoutManager shows items in a vertical or horizontal scrolling list.
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = transactionAdapter
 

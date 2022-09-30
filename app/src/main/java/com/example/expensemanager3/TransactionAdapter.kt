@@ -44,9 +44,9 @@ class TransactionAdapter( var transactions: List<Transaction>) :
     // Returns the total number of items in the data set held by the adapter.
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionHolder {
         //"Inflation" is a term that refers to parsing XML and turning it into UI-oriented data structures.
-        //"Inflating" a view means taking the layout XML and parsing it to create the view and viewgroup
-        // objects from the elements and their attributes specified within, and then adding the hierarchy
-        // of those views and viewgroups to the parent ViewGroup
+        //to create the view and viewgroup objects from the elements and
+        // their attributes specified within, and then adding the hierarchy
+
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.transactions_layout, parent, false)
         return TransactionHolder(view)
