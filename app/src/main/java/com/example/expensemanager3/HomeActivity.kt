@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //transactions = listOf()
+        transactions = listOf()
         db = Room.databaseBuilder(
             this,
             AppDatabase::class.java,
@@ -88,8 +88,7 @@ class HomeActivity : AppCompatActivity() {
         binding.balanceAmount.text = " €%.2f".format(balance)
         binding.expenseAmount.text = "- €%.2f".format(kotlin.math.abs(expenses))
     }
-
-
+    
     // everytime we get back to the Home page we have to update the dashboard,
     // because probably there has been added a transaction or updated so we call the function fetchData
     override fun onResume() {
