@@ -18,7 +18,6 @@ class AddTransactionActivity : AppCompatActivity() {
             finish()
         }
 
-
         binding.addBudgetBtn.setOnClickListener {
             val item = binding.itemInput.text.toString()
             val amount = binding.amountInput.text.toString()

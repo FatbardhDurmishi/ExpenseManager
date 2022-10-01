@@ -18,6 +18,7 @@ class SingUpActivity : AppCompatActivity() {
         auth = Firebase.auth
         setContentView(binding.root)
 
+
         binding.btnCreateAcc.setOnClickListener {
             val email = binding.emailSingupInput.text.toString()
             val pass = binding.passwordSingupInput.text.toString()

@@ -23,7 +23,8 @@ import kotlinx.coroutines.launch
 //the layout, The layout is the view that will be created for each item to be loaded into the RecyclerView.
 // (ne detyren tone eshte transaction_layout),dmth e perdor qet layout si shabllon per mi kriju views per transactions
 //ViewHolder,A ViewHolder is used to cache the view objects in order to save memory.
-//and adapter.The adapter creates new items in the form of ViewHolders, populates the ViewHolders with data, and returns information about the data.
+//and adapter.The adapter creates new items in the form of ViewHolders,
+// populates the ViewHolders with data, and returns information about the data.
 class TransactionAdapter( var transactions: List<Transaction>) :
     RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
     private lateinit var db: AppDatabase
@@ -46,7 +47,6 @@ class TransactionAdapter( var transactions: List<Transaction>) :
         //"Inflation" is a term that refers to parsing XML and turning it into UI-oriented data structures.
         //to create the view and viewgroup objects from the elements and
         // their attributes specified within, and then adding the hierarchy
-
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.transactions_layout, parent, false)
         return TransactionHolder(view)

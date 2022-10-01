@@ -31,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        transactions = listOf()
+        //transactions = listOf()
         db = Room.databaseBuilder(
             this,
             AppDatabase::class.java,
