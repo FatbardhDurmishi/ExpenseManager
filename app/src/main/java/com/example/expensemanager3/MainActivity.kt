@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        auth=FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
         setContentView(binding.root)
 
         binding.logInButton.setOnClickListener {
@@ -28,30 +28,33 @@ class MainActivity : AppCompatActivity() {
             }
 
             if (email.isNotEmpty() && pass.isNotEmpty()) {
-                if(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    if(pass.length>=8){
+                if (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    if (pass.length >= 8) {
                         auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(this) {
                             if (it.isSuccessful) {
                                 val intent = Intent(this, HomeActivity::class.java)
                                 startActivity(intent)
                             } else {
-                                Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         }
                     } else {
-                        binding.passwordLoginInput.error ="Password should be at least 8 characters"
+                        binding.passwordLoginInput.error =
+                            "Password should be at least 8 characters"
                     }
-                }else{
-                    binding.emailLoginInput.error="Please enter a valid email"
+                } else {
+                    binding.emailLoginInput.error = "Please enter a valid email"
                 }
 
-            }else{
-                Toast.makeText(this,"No empty fields allowed", Toast.LENGTH_SHORT)
-                    .show()            }
+            } else {
+                Toast.makeText(this, "No empty fields allowed", Toast.LENGTH_SHORT)
+                    .show()
+            }
         }
 
         binding.createAccount.setOnClickListener {
-            val intent = Intent(this,SingUpActivity::class.java)
+            val intent = Intent(this, SingUpActivity::class.java)
             startActivity(intent)
         }
     }

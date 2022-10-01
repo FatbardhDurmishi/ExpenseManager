@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class UpdateTransactionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUpdateTransactionBinding
-    private lateinit var transactionFromIntent:Transaction
+    private lateinit var transactionFromIntent: Transaction
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUpdateTransactionBinding.inflate(layoutInflater)
@@ -38,11 +38,13 @@ class UpdateTransactionActivity : AppCompatActivity() {
             }
 
             if (item.isNotEmpty() && amount.isNotEmpty()) {
-                val transaction = Transaction(transactionFromIntent.id, item, amount.toDouble(), description)
+                val transaction =
+                    Transaction(transactionFromIntent.id, item, amount.toDouble(), description)
                 update(transaction)
             }
         }
     }
+
     private fun update(transaction: Transaction) {
         val db = Room.databaseBuilder(
             this,

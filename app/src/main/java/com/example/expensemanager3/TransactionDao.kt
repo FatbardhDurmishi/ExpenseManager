@@ -11,7 +11,7 @@ import androidx.room.*
 @Dao
 interface TransactionDao {
     @Query("SELECT * FROM transactions")
-    fun getAll():List<Transaction>
+    fun getAll(): List<Transaction>
 
     ///Marks a method in a Dao annotated class as an insert method.
     @Insert

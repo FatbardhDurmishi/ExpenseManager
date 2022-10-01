@@ -16,6 +16,7 @@ import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var transactions: List<Transaction>
+
     // idea about data binding is to create an object that connects/maps/binds
     // two pieces of distant information together at compile time,
     // so that you don't have to look for it at runtime.
@@ -88,7 +89,7 @@ class HomeActivity : AppCompatActivity() {
         binding.balanceAmount.text = " €%.2f".format(balance)
         binding.expenseAmount.text = "- €%.2f".format(kotlin.math.abs(expenses))
     }
-    
+
     // everytime we get back to the Home page we have to update the dashboard,
     // because probably there has been added a transaction or updated so we call the function fetchData
     override fun onResume() {

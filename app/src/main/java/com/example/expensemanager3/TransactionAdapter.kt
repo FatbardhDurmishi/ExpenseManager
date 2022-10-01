@@ -25,7 +25,7 @@ import kotlinx.coroutines.launch
 //ViewHolder,A ViewHolder is used to cache the view objects in order to save memory.
 //and adapter.The adapter creates new items in the form of ViewHolders,
 // populates the ViewHolders with data, and returns information about the data.
-class TransactionAdapter( var transactions: List<Transaction>) :
+class TransactionAdapter(var transactions: List<Transaction>) :
     RecyclerView.Adapter<TransactionAdapter.TransactionHolder>() {
     private lateinit var db: AppDatabase
 
@@ -41,8 +41,7 @@ class TransactionAdapter( var transactions: List<Transaction>) :
 
     //This method calls onCreateViewHolder to create a new ViewHolder and
     // initializes some private fields to be used by RecyclerView.
-    // Returns the position of the given ViewHolder in the given Adapter .
-    // Returns the total number of items in the data set held by the adapter.
+    // in this method we inflate the layout that will be used in the recycler viewer
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionHolder {
         //"Inflation" is a term that refers to parsing XML and turning it into UI-oriented data structures.
         //to create the view and viewgroup objects from the elements and
@@ -106,11 +105,11 @@ class TransactionAdapter( var transactions: List<Transaction>) :
 
         //to open the UpdateTransaction Activity
         holder.btnEdit.setOnClickListener {
-            val intent = Intent(context,UpdateTransactionActivity::class.java)
+            val intent = Intent(context, UpdateTransactionActivity::class.java)
             //putExtra let's us send data to another activity through the intent
             //as we see it takes to parameter the name(from which we access the data in the other activity),
             //and the data itself
-            intent.putExtra("transaction",transaction)
+            intent.putExtra("transaction", transaction)
             //to start an activity from classes and activities its different(in an activity we can directly call startActivity method,
             // but from a class we have to use the context). A context is the current state of the activity or the application(in this case,
             // the current state of the app)
