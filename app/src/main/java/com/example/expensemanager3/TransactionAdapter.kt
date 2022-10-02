@@ -60,7 +60,7 @@ class TransactionAdapter(var transactions: List<Transaction>) :
         val transaction = transactions[position]
         val context = holder.item.context
 
-        if (transaction.amount > +0) {
+        if (transaction.amount > 0) {
             holder.amount.text = "+ €%.2f".format(transaction.amount)
             holder.amount.setTextColor(ContextCompat.getColor(context, R.color.green))
         } else {
